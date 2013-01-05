@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 style="text-align: center">Photo sharing - Vladimir Rosancic</h1>
+    
+    <div id="photo_upload">
+        <form action="" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <p>{{ form.non_field_errors }}</p>
+            
+            <p>{{ form.naziv.label_tag }} </p>
+            <p>
+                {{ form.naziv.errors }}
+                {{ form.naziv }}
+            </p>
+            
+            <p>{{ form.opis.label_tag }} </p>
+            <p>
+                {{ form.opis.errors }}
+                {{ form.opis }}
+            </p>
+            
+            <p>{{ form.fotografija.label_tag }} </p>
+            <p>
+                {{ form.fotografija.errors }}
+                {{ form.fotografija }}
+            </p>
+            <p><input type="submit" value="Podijeli fotografiju" /></p>
+        </form>
+    
+           
+
+    </div>
+    
+    <div>
+         {% if fotografije %}
+            
+            {% for fotografija in fotografije %}
+                <div class="image_border">
+                <a href="photo/{{fotografija.id}}"><img style="width:200px; height:200px; margin:20px;" src="{{MEDIA_URL}}{{ fotografija.putanja }}/" /></a>
+                </div>
+            {% endfor %}
+        {% else %}
+            <p>Nema fotografija za prikaz.</p>
+        {% endif %}
+        <div style="text-align: center; margin: 30px; clear: both">
+        <span>
+            {% if fotografije.has_previous %}
+                <a href="?page={{ fotografije.previous_page_number }}">Prethodna</a>
+            {% endif %}
+    
+            <span class="current">
+                Stranica {{ fotografije.number }} od {{ fotografije.paginator.num_pages }}
+            </span>
+    
+            {% if fotografije.has_next %}
+                <a href="?page={{ fotografije.next_page_number }}">Sljedeca</a>
+            {% endif %}
+        </span>
+    </div>
+    </div>
+    
+    
+    
+{% endblock %}

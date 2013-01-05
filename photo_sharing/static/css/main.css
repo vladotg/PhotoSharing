@@ -1,0 +1,58 @@
+
+body {
+    background:url('bg.png') repeat;
+    color: #000305;
+    font-size: 87.5%; /* 14px */
+    font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    line-height: 1.429;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+}
+
+#wrapper{
+
+    clear: both; 
+    margin: 0 auto; 
+    width: 1000px;
+    padding: 30px;
+    
+}
+
+#photo_upload {
+    margin: 50px auto;
+    padding: 20px;
+    background:#fff;
+    border:1px solid #ccc;
+    text-align:left;
+    width:640px;
+    -moz-box-shadow: 0 0 2px 2px #888;
+    -webkit-box-shadow: 0 0 2px 2px #888;
+    box-shadow: 0 0 2px 2px #888;
+}
+
+.comment {
+    width:900px;
+    clear:both;
+    margin-bottom: 20px;
+    padding: 30px 20px;
+    background:#fff;
+    border:1px solid #ccc;
+    text-align:left;
+    -moz-box-shadow: 0 0 2px 2px #888;
+    -webkit-box-shadow: 0 0 2px 2px #888;
+    box-shadow: 0 0 2px 2px #888;
+}
+
+.image_border {
+    background: transparent;
+    float: left;
+    -webkit-border-radius: 22px;
+    -moz-border-radius: 22px;
+    border-radius: 22px;
+}
+.image_border:hover{
+    background: #D1D1D1;
+}
+
+

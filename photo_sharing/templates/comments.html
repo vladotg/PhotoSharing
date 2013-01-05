@@ -1,0 +1,14 @@
+<div id = "komentari">
+    {% if komentari %}
+            
+        {% for komentar in komentari %}
+            <div class = "comment">
+                <div style="float: right;">{{komentar.vrijeme_komentiranja}}</div>
+                <div style="clear: both"></div>
+                {{komentar.komentar}}
+            </div>   
+        {% endfor %}
+    {% else %}
+        <p>Za ovu fotografiju jos nema komentara.</p>
+    {% endif %}
+</div>

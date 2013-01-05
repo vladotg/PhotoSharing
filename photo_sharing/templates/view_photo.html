@@ -1,0 +1,43 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+    <div><a href="{% url index %}">Povratak na naslovnicu</a></div></br>
+    <img style = "width: 600px; float: left; margin: 0 30px 30px 0px;" src="{{MEDIA_URL}}{{ fotografija.putanja }}/" />
+    <h1>{{fotografija.naziv}}</h1>
+    <h4>Opis fotografije:</h4>
+    <p>{{fotografija.opis}}</p>
+    <div style="clear: both"></div>
+    
+    {% include "comments.html" %}
+    
+    <script>
+    $(document).ready(function() {
+        $('#comment_form').submit(function() { 
+            $.ajax({ 
+                data: $(this).serialize(), 
+                type: 'get', 
+                url: "comment/", 
+                success: function(response) {                    
+                    $('#komentari').html(response);
+                    $('#comment_form').each(function(){
+                            this.reset();
+                    });
+                }
+            });
+            return false;
+        });
+    });
+    </script>
+       
+    <form id="comment_form" action="index/" method ="post">
+        <p>{{ form.non_field_errors }}</p>
+            
+        <p>
+            {{ form.komentar.errors }}
+            {{ form.komentar }}
+        </p>
+        <p><input type="submit" value="Komentiraj" /></p>
+    </form>
+ 
+{% endblock %}
